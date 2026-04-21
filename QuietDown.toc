@@ -1,0 +1,11 @@
+## Title: QuietDown
+## Interface: 30300
+## Author: Subby
+## Version: 0.0.1
+## DefaultState: enabled
+## Notes: Suppresses annoying UI error messages and spam text from game.
+
+## SavedVariables: 
+## SavedVariablesPerCharacter: 
+
+QuietDown.lua
