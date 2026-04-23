@@ -5,7 +5,7 @@
 ## DefaultState: enabled
 ## Notes: Suppresses annoying UI error messages and spam text from game.
 
-## SavedVariables: 
+## SavedVariables:
 ## SavedVariablesPerCharacter: 
 
 QuietDown.lua
