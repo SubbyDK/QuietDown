@@ -45,6 +45,11 @@ local BlackListErrors = {
 -- Guild/party/raid/whisper/etc. are NEVER affected.
 ---------------------------------------------------------
 local ServerMessageBlacklist = {
+
+---------------------------------------------------------
+-- Server announcements about all kind og things
+---------------------------------------------------------
+
     ["Send a screenshot of your email receipt and account name"]    = true, -- [Ascension Autobroadcast]: Having DP or shop issues? Send a screenshot of your email receipt and account name to Tuluku0001 on Discord and fully describe your issue. If you do not have Discord, you can make an in-game ticket via the ? icon next to the game menu button.
     ["Every crafted item gains bonus affix stats"]                  = true, -- [Ascension Autobroadcast]:  [Crafting Overhaul] Crafting on Ascension has been overhauled! Every crafted item gains bonus affix stats and you can upgrade ALL crafted gear by using crafting upgrade kits taught from trainers!
     ["try toggling Hardware Cursor in video settings."]             = true, -- [Ascension Autobroadcast]: If you are experiencing FPS drops, try toggling Hardware Cursor in video settings. A recent Nvidia driver update caused this issue.
@@ -64,7 +69,32 @@ local ServerMessageBlacklist = {
     ["Taking down Heroic Dungeon Bosses will earn you Marks"]       = true, -- [Ascension Autobroadcast]:  [Marks of Triumph] Taking down Heroic Dungeon Bosses will earn you Marks of Triumph. Exchange these Marks in your capital city for Epic Rewards, ask any guard for directions!
     ["Endgame Factions have been buffed on Warcraft Reborn,"]       = true, -- [Ascension Autobroadcast]:  [Reputation Rewards] Endgame Factions have been buffed on Warcraft Reborn, earn the strongest rewards available by gaining exalted with: The Argent Dawn, Timbermaw Hold, Thorium Brotherhood and Cenarion Circle. Visit the Quartermasters at the respective faction to see what they have to offer!
     ["Did you know that you can now join our discord by"]           = true, -- [Ascension Autobroadcast]:  [Discord] Did you know that you can now join our discord by clicking this chat link? Join and chat with the community! [Discord: Ascension]
+    ["Stumbled across a bug? Report it to the bugtracker on"]       = true, -- [Ascension Autobroadcast]: Stumbled across a bug? Report it to the bugtracker on the Ascension Launcher, or https://ascension.gg/bugtracker This helps us squash the bug as fast as possible, and makes sure no information gets lost in translation if it were posted to a ticket.
+    ["Every creature drops the exact gear they're wearing with"]    = true, -- [Ascension Autobroadcast]:  [Immersive Gear Drops] Every creature drops the exact gear they're wearing with matching stats! Want spell power? Slay casters. Need defense? Take down armored warriors with shields. The gear has the stats you'd expect from that creature type, letting you look EXACTLY like the enemies you defeat!
+    ["Did you know that you can now join our discord by clicking"]  = true, -- [Ascension Autobroadcast]:  [Discord] Did you know that you can now join our discord by clicking this chat link? Join and chat with the community! [Discord: Ascension]
+    ["Endgame Factions have been buffed on Warcraft Reborn,"]       = true, -- [Ascension Autobroadcast]:  [Reputation Rewards] Endgame Factions have been buffed on Warcraft Reborn, earn the strongest rewards available by gaining exalted with: The Argent Dawn, Timbermaw Hold, Thorium Brotherhood and Cenarion Circle. Visit the Quartermasters at the respective faction to see what they have to offer!
+    ["If a tooltip, item icon or item looks wrong,"]                = true, -- [Ascension Autobroadcast]: If a tooltip, item icon or item looks wrong, try updating your patch with our newest launcher, and clearing your cache. Select the Cog Wheel in the Launcher then Clear Cache. Or delete the WDB folder from the Cache folder in your install directory.
+    ["Mystic Runes and Mystic Orbs can be used to Reroll Enchants"] = true, -- [Ascension Autobroadcast]: Mystic Runes and Mystic Orbs can be used to Reroll Enchants on your Items at a Mystic Enchanting Altar. If you don't have Mystic Runes or Mystic Orbs, you can use gold instead!
+    ["Honorable Combat Zones are places where you can engage"]      = true, -- [Ascension Autobroadcast]:  [Honorable Combat] Honorable Combat Zones are places where you can engage in 1v1 Combat, no strings attached. Ashenvale, Desolace, Feralas are all Honorable Combat zones when in High-Risk. Winterspring is always an Honorable Combat zone.
 
+---------------------------------------------------------
+-- Maybe something to put in
+---------------------------------------------------------
+
+-- [SERVER] [Lottery] - Gallywix's Lottery ends in 1 day.
+
+-- [SERVER] Restart in 7 Minute(s)  - Updates. 3 Minutes Downtime
+
+-- [BAN] Ilusions has been permanently banned. Reason: "Multiboxxing"
+
+-- Flushing Arena points based on team ratings, this may take a few minutes. Please stand by...
+-- Done flushing Arena points.
+
+---------------------------------------------------------
+-- Not really sure what this is
+---------------------------------------------------------
+
+    ["[Void Portal]"]                                               = true, -- [Void Portal]  [Voidtalon of the Dark Star] has been captured by Malestred!
 
     ["[Criminal Intent]"]                                           = true, -- [Criminal Intent]  Aspinia has slain Brithania near you at Thorn Hill!
 
@@ -72,8 +102,17 @@ local ServerMessageBlacklist = {
     ["[High-Risk]"]                                                 = true, -- [High-Risk] [Crow's Cache]  The Crow's Treasure has been looted by Jumpswife - sup!
     ["Conquest of Azeroth Alpha Realm, a new realm with 21"]        = true, -- Lampy has read their [Conquest of Azeroth Travel Guide] and unlocked access to the Conquest of Azeroth Alpha Realm, a new realm with 21 completely unique custom classes!
 
+---------------------------------------------------------
+-- All kinds of scrolls being used in the world
+---------------------------------------------------------
+
     ["[Titan Scroll]"]                                              = true, -- [Titan Scroll]  Cassll  did not allow the Titan Scroll: Norgannon to fail!
     ["[Keeper's Scroll]"]                                           = true, -- [Keeper's Scroll] Everyone can now access the Ancient Enchanting Altar in the Trade District, thanks to the brave hero Kkrf who used a [Keeper's Scroll: Ancient Enchanting Altar]!
+    ["[Posture Check]"]                                             = true, -- [Posture Check]  Alarasza has initiated a Posture Check! Straighten out your back and drink some water.
+
+---------------------------------------------------------
+-- World Boss Spawned
+---------------------------------------------------------
 
     ["[Setis]"]                                                     = true, -- [Setis]  has spawned in The Scarab Wall (No Risk)!
     ["[Emeriss]"]                                                   = true, -- [Emeriss]  has spawned in Bough Shadow (High Risk)!
@@ -81,19 +120,17 @@ local ServerMessageBlacklist = {
     ["[Kaldros Depthbreaker]"]                                      = true, -- [Kaldros Depthbreaker]  has spawned in Depthbreaker's Hollow (No Risk)!
     ["[Lethon]"]                                                    = true, -- [Lethon]  has spawned in Twilight Grove (No Risk)!
     ["[Atal'zul, the Soulreaver]"]                                  = true, -- [Atal'zul, the Soulreaver]  has spawned in Zul'Mashar (High Risk)!
+    ["[Snowgrave]"]                                                 = true, -- [Snowgrave]  has spawned in Snowgrave's Cavern (No Risk)!
+    ["[Azuregos]"]                                                  = true, -- [Azuregos]  has spawned in Azshara (No Risk)!
+    ["[The Will of Soggoth]"]                                       = true, -- [The Will of Soggoth]  has spawned in The Master's Glaive (No Risk)!
+
+---------------------------------------------------------
+-- Hardcore and Ironman died
+---------------------------------------------------------
 
     ["has been killed by "]                                         = true, -- [Hardcore] Nzghoul (Level 17) has been killed by [Defias Pyromancer].
     [") has been killed by Falling."]                               = true, -- [Ironman] Kofu (Level 14) has been killed by Falling.
 }
-
-
-
-
--- [SERVER] Restart in 7 Minute(s)  - Updates. 3 Minutes Downtime
-
-
-
-
 
 ---------------------------------------------------------
 -- UI Error Filter
@@ -126,3 +163,4 @@ local function QuietDown_ServerFilter(self, event, msg, ...)
 end
 
 ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", QuietDown_ServerFilter)
+
