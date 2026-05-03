@@ -1,8 +1,15 @@
 -- QuietDown: Suppress UI errors and selected server/system spam in WoW 3.3.5a
 
 ---------------------------------------------------------
+-- Locals
+---------------------------------------------------------
+
+local debug = true
+
+---------------------------------------------------------
 -- UI Error Blacklist (fully commented)
 ---------------------------------------------------------
+
 local BlackListErrors = {
     [ERR_OUT_OF_MANA]                 = true,   -- Not enough mana.
     [ERR_OUT_OF_ENERGY]               = true,   -- Not enough energy.
@@ -16,13 +23,15 @@ local BlackListErrors = {
     [ERR_BADATTACKPOS]                = true,   -- You are too far away!
     [ERR_OUT_OF_RANGE]                = true,   -- Out of range.
     [ERR_NO_ATTACK_TARGET]            = true,   -- There is nothing to attack.
+    [ERR_UNIT_NOT_FOUND]              = true,   -- Unknown Unit.
     [ERR_INVALID_ATTACK_TARGET]       = true,   -- You cannot attack that target.
+    [ERR_NOT_IN_COMBAT]               = true,   -- You can't do that while in combat.
+    [ERR_ALREADY_PICKPOCKETED]        = true,   -- Your target has already had its pockets picked
 
     [ERR_BADATTACKFACING]             = true,   -- You are facing the wrong way!
 
     [SPELL_FAILED_MOVING]             = true,   -- Can't do that while moving.
     [SPELL_FAILED_AFFECTING_COMBAT]   = true,   -- You are in combat.
-    [ERR_NOT_IN_COMBAT]               = true,   -- You can't do that while in combat.
     [SPELL_FAILED_UNIT_NOT_INFRONT]   = true,   -- Target needs to be in front of you.
     [SPELL_FAILED_TOO_CLOSE]          = true,   -- Target too close.
     [SPELL_FAILED_NO_COMBO_POINTS]    = true,   -- That ability requires combo points.
@@ -35,7 +44,6 @@ local BlackListErrors = {
     [SPELL_FAILED_NOT_MOUNTED]        = true,   -- You are mounted.
     [SPELL_FAILED_NOT_ON_TAXI]        = true,   -- You are in flight.
 
-    [ERR_UNIT_NOT_FOUND]              = true,   -- Unknown Unit.
     [INTERRUPTED]                     = true,   -- Interrupted.
 }
 
@@ -44,6 +52,7 @@ local BlackListErrors = {
 -- Only messages in CHAT_MSG_SYSTEM are filtered.
 -- Guild/party/raid/whisper/etc. are NEVER affected.
 ---------------------------------------------------------
+
 local ServerMessageBlacklist = {
 
 ---------------------------------------------------------
@@ -76,6 +85,10 @@ local ServerMessageBlacklist = {
     ["If a tooltip, item icon or item looks wrong,"]                = true, -- [Ascension Autobroadcast]: If a tooltip, item icon or item looks wrong, try updating your patch with our newest launcher, and clearing your cache. Select the Cog Wheel in the Launcher then Clear Cache. Or delete the WDB folder from the Cache folder in your install directory.
     ["Mystic Runes and Mystic Orbs can be used to Reroll Enchants"] = true, -- [Ascension Autobroadcast]: Mystic Runes and Mystic Orbs can be used to Reroll Enchants on your Items at a Mystic Enchanting Altar. If you don't have Mystic Runes or Mystic Orbs, you can use gold instead!
     ["Honorable Combat Zones are places where you can engage"]      = true, -- [Ascension Autobroadcast]:  [Honorable Combat] Honorable Combat Zones are places where you can engage in 1v1 Combat, no strings attached. Ashenvale, Desolace, Feralas are all Honorable Combat zones when in High-Risk. Winterspring is always an Honorable Combat zone.
+    ["Heroes! Have any questions about Ascension?"]                 = true, -- [Ascension Autobroadcast]: Heroes! Have any questions about Ascension? Check out our Wiki which features over hundreds of different articles! https://project-ascension.fandom.com/wiki/Home
+    ["Have questions about different aspects of Ascension?"]        = true, -- [Ascension Autobroadcast]: [Features] Have questions about different aspects of Ascension? We post feature videos on our youtube that dive into the nitty gritty of every system. Just search for 'Ascension Features: And the feature you're looking to learn more about on youtube.
+    ["Make sure you have access to the recovery email on your"]     = true, -- [Ascension Autobroadcast]: Make sure you have access to the recovery email on your account in case you ever need to reset your password!
+    ["When making a ticket in any language other than English."]    = true, -- [Ascension Autobroadcast]: When making a ticket in any language other than English. Write the language of your ticket at the beginning. This helps us sort your request and service you faster!
 
 ---------------------------------------------------------
 -- Maybe something to put in
@@ -135,6 +148,7 @@ local ServerMessageBlacklist = {
 ---------------------------------------------------------
 -- UI Error Filter
 ---------------------------------------------------------
+
 local OriginalAddMessage = UIErrorsFrame.AddMessage
 
 function UIErrorsFrame:AddMessage(message, r, g, b, id)
@@ -148,6 +162,7 @@ end
 -- Server/System Chat Filter
 -- Filters ONLY CHAT_MSG_SYSTEM, so player chat is safe.
 ---------------------------------------------------------
+
 local function QuietDown_ServerFilter(self, event, msg, ...)
     if (not msg) then
         return false
@@ -163,4 +178,3 @@ local function QuietDown_ServerFilter(self, event, msg, ...)
 end
 
 ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", QuietDown_ServerFilter)
-
