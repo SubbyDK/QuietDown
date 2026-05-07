@@ -46,8 +46,8 @@ It targets two main areas:
 Interface/
     └── AddOns/
         └── QuietDown/
-        ├── QuietDown.lua
-        └── QuietDown.toc
+            ├── QuietDown.lua
+            └── QuietDown.toc
 ```
 5. Restart World of Warcraft.
 
