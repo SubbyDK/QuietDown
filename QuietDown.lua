@@ -89,6 +89,7 @@ local ServerMessageBlacklist = {
     ["Have questions about different aspects of Ascension?"]        = true, -- [Ascension Autobroadcast]: [Features] Have questions about different aspects of Ascension? We post feature videos on our youtube that dive into the nitty gritty of every system. Just search for 'Ascension Features: And the feature you're looking to learn more about on youtube.
     ["Make sure you have access to the recovery email on your"]     = true, -- [Ascension Autobroadcast]: Make sure you have access to the recovery email on your account in case you ever need to reset your password!
     ["When making a ticket in any language other than English."]    = true, -- [Ascension Autobroadcast]: When making a ticket in any language other than English. Write the language of your ticket at the beginning. This helps us sort your request and service you faster!
+    ["If you are seeing items that say 'Retrieving Item"]           = true, -- [Ascension Autobroadcast]: If you are seeing items that say 'Retrieving Item Information' try typing /reload to fix it!
 
 ---------------------------------------------------------
 -- Maybe something to put in
@@ -116,6 +117,13 @@ local ServerMessageBlacklist = {
     ["Conquest of Azeroth Alpha Realm, a new realm with 21"]        = true, -- Lampy has read their [Conquest of Azeroth Travel Guide] and unlocked access to the Conquest of Azeroth Alpha Realm, a new realm with 21 completely unique custom classes!
 
 ---------------------------------------------------------
+-- Darkmoon Faire
+---------------------------------------------------------
+
+    ["Darkmoon Faire has ended in"]                                 = true, -- [Darkmoon Faire] - Darkmoon Faire has ended in Mulgore.
+    ["Darkmoon Faire is now live in"]                               = true, -- [Darkmoon Faire] - Darkmoon Faire is now live in Mulgore.
+
+---------------------------------------------------------
 -- All kinds of scrolls being used in the world
 ---------------------------------------------------------
 
@@ -136,6 +144,7 @@ local ServerMessageBlacklist = {
     ["[Snowgrave]"]                                                 = true, -- [Snowgrave]  has spawned in Snowgrave's Cavern (No Risk)!
     ["[Azuregos]"]                                                  = true, -- [Azuregos]  has spawned in Azshara (No Risk)!
     ["[The Will of Soggoth]"]                                       = true, -- [The Will of Soggoth]  has spawned in The Master's Glaive (No Risk)!
+    ["[Taerar]"]                                                    = true, -- [Taerar]  has spawned in Dream Bough (High Risk)!
 
 ---------------------------------------------------------
 -- Hardcore and Ironman died
