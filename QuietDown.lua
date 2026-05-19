@@ -145,13 +145,24 @@ local ServerMessageBlacklist = {
     ["[Azuregos]"]                                                  = true, -- [Azuregos]  has spawned in Azshara (No Risk)!
     ["[The Will of Soggoth]"]                                       = true, -- [The Will of Soggoth]  has spawned in The Master's Glaive (No Risk)!
     ["[Taerar]"]                                                    = true, -- [Taerar]  has spawned in Dream Bough (High Risk)!
+    ["[Ysondre]"]                                                   = true, -- [Ysondre]  has spawned in Seradane (No Risk)!
 
 ---------------------------------------------------------
 -- Hardcore and Ironman died
 ---------------------------------------------------------
 
-    ["has been killed by "]                                         = true, -- [Hardcore] Nzghoul (Level 17) has been killed by [Defias Pyromancer].
-    [") has been killed by Falling."]                               = true, -- [Ironman] Kofu (Level 14) has been killed by Falling.
+    ["[Hardcore]"]                                                  = true, -- [Hardcore] Nzghoul (Level 17) has been killed by [Defias Pyromancer].
+    ["[Ironman]"]                                                   = true, -- [Ironman] Kofu (Level 14) has been killed by Falling.
+}
+
+---------------------------------------------------------
+-- NPC yelling.
+---------------------------------------------------------
+
+local NPCYellBlacklist = {
+
+    ["Gamon will beat you next time!!!"]                            = true, -- NOOOooo, Gamon will beat you next time!!!
+
 }
 
 ---------------------------------------------------------
@@ -168,22 +179,32 @@ function UIErrorsFrame:AddMessage(message, r, g, b, id)
 end
 
 ---------------------------------------------------------
--- Server/System Chat Filter
--- Filters ONLY CHAT_MSG_SYSTEM, so player chat is safe.
+-- Chat Message Filters & Event Registration
+-- Handles suppression of system and npc yell spam
 ---------------------------------------------------------
 
+-- System filter (CHAT_MSG_SYSTEM)
 local function QuietDown_ServerFilter(self, event, msg, ...)
-    if (not msg) then
-        return false
-    end
-
-    for text in pairs(ServerMessageBlacklist) do
-        if (msg:find(text, 1, true)) then  -- PLAIN TEXT
+    for keyword, _ in pairs(ServerMessageBlacklist) do
+        -- we use plain match (true) to avoid magic character issues like [ and ]
+        if string.find(msg, keyword, 1, true) then
             return true
         end
     end
-
-    return false
+    return false, msg, ...
 end
 
+-- NPC Yell filter (CHAT_MSG_MONSTER_YELL)
+local function QuietDown_NPCYellFilter(self, event, msg, ...)
+    for keyword, _ in pairs(NPCYellBlacklist) do
+        -- we use plain match here too, just to be safe and consistent
+        if string.find(msg, keyword, 1, true) then
+            return true
+        end
+    end
+    return false, msg, ...
+end
+
+-- Register both filters to the game
 ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", QuietDown_ServerFilter)
+ChatFrame_AddMessageEventFilter("CHAT_MSG_MONSTER_YELL", QuietDown_NPCYellFilter)
