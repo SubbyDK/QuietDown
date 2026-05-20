@@ -146,11 +146,13 @@ local ServerMessageBlacklist = {
     ["[The Will of Soggoth]"]                                       = true, -- [The Will of Soggoth]  has spawned in The Master's Glaive (No Risk)!
     ["[Taerar]"]                                                    = true, -- [Taerar]  has spawned in Dream Bough (High Risk)!
     ["[Ysondre]"]                                                   = true, -- [Ysondre]  has spawned in Seradane (No Risk)!
+    ["Vol'jin"]                                                     = true, -- [Vol'jin]  has spawned in Valley of Wisdom (No Risk)!
 
 ---------------------------------------------------------
 -- Hardcore and Ironman died
 ---------------------------------------------------------
 
+    [" has been killed by "]                                        = true, -- [Hardcore - Resolute 1x Experience] Vulpine (Level 28) has been killed by [Dark Strand Assassin].
     ["[Hardcore]"]                                                  = true, -- [Hardcore] Nzghoul (Level 17) has been killed by [Defias Pyromancer].
     ["[Ironman]"]                                                   = true, -- [Ironman] Kofu (Level 14) has been killed by Falling.
 }
@@ -162,6 +164,15 @@ local ServerMessageBlacklist = {
 local NPCYellBlacklist = {
 
     ["Gamon will beat you next time!!!"]                            = true, -- NOOOooo, Gamon will beat you next time!!!
+    ["What's this I hear about a party?"]                           = true, -- What's this I hear about a party? I wasn't invited!
+    ["some whelp dares to notice me!"]                              = true, -- RAH! I’ll keep shoutin’ ‘til some whelp dares to notice me!
+    ["Have you signed up for this week's raffle?"]                  = true, -- Is that you, Berbere? Have you signed up for this week's raffle?
+    ["It's demotions for everyone if the Sharks beat"]              = true, -- It's demotions for everyone if the Sharks beat the Buccaneers or if this lottery does not reach gold cap!
+    ["You're all lazy! Get back to work."]                          = true, -- You're all lazy! Get back to work. Especially you, Tebrica!
+    ["I'm beginning to regret promoting you,"]                      = true, -- I'm beginning to regret promoting you, Meningite!
+    ["Drink Kaja'Cola!"]                                            = true, -- Drink Kaja'Cola!
+    ["All hail the greatest trade prince on Azeroth... me!"]        = true, -- All hail the greatest trade prince on Azeroth... me!
+    ["Hahahaha!"]                                                   = true, -- Hahahaha!
 
 }
 
