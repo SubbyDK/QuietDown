@@ -90,6 +90,7 @@ local ServerMessageBlacklist = {
     ["Make sure you have access to the recovery email on your"]     = true, -- [Ascension Autobroadcast]: Make sure you have access to the recovery email on your account in case you ever need to reset your password!
     ["When making a ticket in any language other than English."]    = true, -- [Ascension Autobroadcast]: When making a ticket in any language other than English. Write the language of your ticket at the beginning. This helps us sort your request and service you faster!
     ["If you are seeing items that say 'Retrieving Item"]           = true, -- [Ascension Autobroadcast]: If you are seeing items that say 'Retrieving Item Information' try typing /reload to fix it!
+    ["You can Transmog your items in any capital city."]            = true, -- [Ascension Autobroadcast]:  [Transmog]  You can Transmog your items in any capital city. Transmogrifying them allows them to take the appearance of any other item from the world or our cosmetic shop. For each item you transmogrify you will need a rune of transmogrification. You can obtain them in capitial cities, The Mage Tower in Stormwind City and the Drag of Orgrimmar!
 
 ---------------------------------------------------------
 -- Maybe something to put in
@@ -173,6 +174,8 @@ local NPCYellBlacklist = {
     ["Drink Kaja'Cola!"]                                            = true, -- Drink Kaja'Cola!
     ["All hail the greatest trade prince on Azeroth... me!"]        = true, -- All hail the greatest trade prince on Azeroth... me!
     ["Hahahaha!"]                                                   = true, -- Hahahaha!
+    ["Think this Valley of Trials will make you a legend?"]         = true, -- Think this Valley of Trials will make you a legend? Hah! If you seek glory, you’ll face me. Step up and take my challenge!
+    ["Thank you for your hard work and dedication in fighting"]     = true, -- Thank you for your hard work and dedication in fighting Azeroth's inflation. Unpaid overtime is approved for all!
 
 }
 
